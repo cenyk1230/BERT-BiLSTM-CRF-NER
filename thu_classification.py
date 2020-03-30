@@ -25,18 +25,14 @@ from bert_base.bert import tokenization
 
 os.environ['CUDA_VISIBLE_DEVICES'] = '2'
 
-if os.name == 'nt':
-    bert_path = 'C:\迅雷下载\chinese_L-12_H-768_A-12'
-    root_path = r'C:\workspace\python\BERT_Base'
-else:
-    bert_path = '/home/macan/ml/data/chinese_L-12_H-768_A-12'
-    root_path = '/home/macan/ml/workspace/BERT_Base2'
+bert_path = '/home/yukuo/chinese_L-12_H-768_A-12'
+root_path = '/home/yukuo/BERT-BiLSTM-CRF-NER'
 
 flags = tf.flags
 FLAGS = flags.FLAGS
 
 ## Required parameters
-flags.DEFINE_string("data_dir",  os.path.join(os.path.join(root_path, 'data'), 'classification'),
+flags.DEFINE_string("data_dir",  os.path.join(os.path.join(root_path, 'data_class')),
                     "The input data dir. Should contain the .tsv files (or other data files) for the task.")
 
 flags.DEFINE_string(
@@ -50,7 +46,7 @@ flags.DEFINE_string("vocab_file", os.path.join(bert_path, 'vocab.txt'),
                     "The vocabulary file that the BERT model was trained on.")
 
 flags.DEFINE_string(
-    "output_dir", os.path.join(os.path.join(root_path, 'output'), 'classification'),
+    "output_dir", os.path.join(os.path.join(root_path, 'output_class'), 'classification'),
     "The output directory where the model checkpoints will be written.")
 
 ## Other parameters
@@ -80,11 +76,11 @@ flags.DEFINE_bool(
     "do_predict", True,
     "Whether to run the model in inference mode on the test set.")
 
-flags.DEFINE_integer("train_batch_size", 32, "Total batch size for training.")
+flags.DEFINE_integer("train_batch_size", 4, "Total batch size for training.")
 
-flags.DEFINE_integer("eval_batch_size", 8, "Total batch size for eval.")
+flags.DEFINE_integer("eval_batch_size", 4, "Total batch size for eval.")
 
-flags.DEFINE_integer("predict_batch_size", 8, "Total batch size for predict.")
+flags.DEFINE_integer("predict_batch_size", 4, "Total batch size for predict.")
 
 flags.DEFINE_float("learning_rate", 5e-5, "The initial learning rate for Adam.")
 
@@ -176,9 +172,8 @@ class DataProcessor(object):
                 line = line.strip()
                 if line == '':
                     continue
-                line = line.split('__\t')
+                line = line.split('\t')
                 if len(line) == 2:
-                    line[0] = line[0].replace('__', '')
                     lines.append(line)
         return lines
 

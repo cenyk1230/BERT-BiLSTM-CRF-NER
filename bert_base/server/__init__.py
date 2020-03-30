@@ -106,6 +106,7 @@ class BertServer(threading.Thread):
                 # optimize the graph, must be done in another process
                 from .graph import optimize_class_model
                 num_labels, label2id, id2label = init_predict_var(self.args.model_dir)
+                num_labels = len(id2label)
                 self.num_labels = num_labels
                 self.id2label = id2label
                 self.logger.info('contain %d labels:%s' %(num_labels, str(id2label.values())))
