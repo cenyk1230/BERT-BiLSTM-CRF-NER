@@ -25,7 +25,7 @@ from bert_base.bert import tokenization
 
 os.environ['CUDA_VISIBLE_DEVICES'] = '2'
 
-bert_path = '/home/yukuo/chinese_L-12_H-768_A-12'
+bert_path = '/home/yukuo/BERT-BiLSTM-CRF-NER/albert_tiny'
 root_path = '/home/yukuo/BERT-BiLSTM-CRF-NER'
 
 flags = tf.flags
@@ -46,7 +46,7 @@ flags.DEFINE_string("vocab_file", os.path.join(bert_path, 'vocab.txt'),
                     "The vocabulary file that the BERT model was trained on.")
 
 flags.DEFINE_string(
-    "output_dir", os.path.join(os.path.join(root_path, 'output_class'), 'classification'),
+    "output_dir", os.path.join(root_path, 'output_class'),
     "The output directory where the model checkpoints will be written.")
 
 ## Other parameters
