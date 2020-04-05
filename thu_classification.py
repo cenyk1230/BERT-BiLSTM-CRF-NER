@@ -25,8 +25,8 @@ from bert_base.bert import tokenization
 
 os.environ['CUDA_VISIBLE_DEVICES'] = '2'
 
-bert_path = '/home/yukuo/BERT-BiLSTM-CRF-NER/albert_tiny'
-root_path = '/home/yukuo/BERT-BiLSTM-CRF-NER'
+bert_path = '/root/yukuo/BERT-BiLSTM-CRF-NER/albert_tiny'
+root_path = '/root/yukuo/BERT-BiLSTM-CRF-NER'
 
 flags = tf.flags
 FLAGS = flags.FLAGS
