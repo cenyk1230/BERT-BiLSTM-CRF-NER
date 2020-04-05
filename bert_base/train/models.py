@@ -216,6 +216,8 @@ def convert_id_to_label(pred_ids_result, idx2label, batch_size):
         for idx, id in enumerate(ids):
             if id == 0:
                 break
+            if idx < len(ids) and ids[idx + 1] == 0:
+                break
             curr_label = idx2label[id]
             if curr_label in ['[CLS]', '[SEP]']:
                 if id == 102 and (idx < len(ids) and ids[idx + 1] == 0):
