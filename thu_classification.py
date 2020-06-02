@@ -25,8 +25,8 @@ from bert_base.bert import tokenization
 
 os.environ['CUDA_VISIBLE_DEVICES'] = '2'
 
-bert_path = '/root/yukuo/BERT-BiLSTM-CRF-NER/albert_tiny'
-root_path = '/root/yukuo/BERT-BiLSTM-CRF-NER'
+bert_path = '/home/yukuo/BERT-BiLSTM-CRF-NER/albert_tiny'
+root_path = '/home/yukuo/BERT-BiLSTM-CRF-NER'
 
 flags = tf.flags
 FLAGS = flags.FLAGS
@@ -103,7 +103,7 @@ flags.DEFINE_integer('save_summary_steps', 500, 'summary steps')
 
 # logger = get_logger(os.path.join(FLAGS.output_dir, 'c.log'))
 import logging
-logging.basicConfig(level = logging.INFO,format = '%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+logging.basicConfig(level = logging.ERROR,format = '%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
 
 class RestoreHook(tf.train.SessionRunHook):
