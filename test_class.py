@@ -14,7 +14,7 @@ def get_intention(content):
         return 'ingredient'
     elif '类型' in content or '菜系' in content or '菜谱' in content:
         return 'series'
-    elif '推荐' in content or '菜品' in content or '食物' in content or '美食' in content:
+    elif '推荐' in content or '菜' in content or '菜品' in content or '食物' in content or '美食' in content:
         return 'dish'
     return 'chat'
 
